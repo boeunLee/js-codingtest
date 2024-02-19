@@ -1,0 +1,38 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>삼각형 판별하기</title>
+  </head>
+  <body>
+    <script>
+      function solution(a, b, c) {
+        //삼각형 필수요건: 작+작>큰
+        let answer = "YES";
+        let max = 0;
+        if (a > b) max = a;
+        else max = b;
+
+        if (c > max) max = c;
+
+        let arr = [a, b, c];
+        let sum = 0;
+
+        for (let i = 0; i < 3; i++) {
+          if (arr[i] != max) {
+            sum += arr[i];
+          }
+        }
+
+        if (sum > max) {
+          answer = "YES";
+        } else {
+          answer = "NO";
+        }
+
+        return answer;
+      }
+
+      console.log(solution(13, 33, 17));
+    </script>
+  </body>
+</html>

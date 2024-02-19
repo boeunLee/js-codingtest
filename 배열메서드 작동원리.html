@@ -1,0 +1,62 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>배열메서드</title>
+  </head>
+  <body>
+    <script>
+      arr = [10, 11, 12, 13, 14, 15];
+
+      /**
+       * forEach
+       * 배열요소를 탐색할때 for문 대신 사용
+       * 요소를 하나하나 탐색하면서 콜백함수 호출하는 원리
+       */
+      arr.forEach(function (v, i) {
+        // v는 요소
+        // i는 인덱스 번호
+      });
+
+      arr.forEach(
+        function (v, i) {
+          // this: [1,2]
+          console.log(v, i, this);
+        },
+        [1, 2]
+      );
+
+      /**
+       * map
+       * 요소들을 탐색하면서 새로운 배열을 생성한다
+       */
+      let answer = arr.map(function (v, i) {
+        return v * v;
+      });
+
+      // 이런 조건을 걸어도 map으로 만들어진 배열은 원본배열과 길이기 똑같다
+      // 따라서 홀수인 경우에는 undefined값이됨
+      let answer1 = arr.map(function (v, i) {
+        if (v % 2 === 0) return v;
+      });
+
+      /**
+       * filter
+       * 조건이 참인 경우의 요소만 리턴하여 새로운 배열을 생성한다
+       */
+
+      // map과 달리 짝수인 요소만 추출하여 새로운 배열 생성
+      let answer2 = arr.filter(function (v, i) {
+        return v % 2 === 0;
+      });
+
+      /**
+       * reduce
+       * 누적값, 요소, 초기값
+       */
+
+      let answer3 = arr.reduce(function (acc, v) {
+        return acc + v;
+      }, 0);
+    </script>
+  </body>
+</html>

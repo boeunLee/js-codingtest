@@ -1,0 +1,29 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>홀수</title>
+  </head>
+  <body>
+    <script>
+      function solution(arr) {
+        let answer = [];
+        let newArr = [];
+        let sum = 0;
+        for (let i = 0; i < arr.length; i++) {
+          if (arr[i] % 2) {
+            sum += arr[i];
+            // 여기서 새로운 배열에 push 하기보다는 교안처럼 바로 min값을 갱신하는 것이 더 간단해보임
+            newArr.push(arr[i]);
+          }
+        }
+        let min = Math.min(...newArr);
+        answer.push(sum);
+        answer.push(min);
+        return answer;
+      }
+
+      arr = [12, 77, 38, 41, 53, 92, 85];
+      console.log(solution(arr));
+    </script>
+  </body>
+</html>

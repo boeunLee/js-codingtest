@@ -1,0 +1,23 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>세 수 중 최솟값</title>
+  </head>
+  <body>
+    <script>
+      function solution(a, b, c) {
+        let answer;
+        let arr = [a, b, c];
+        let min = arr[0];
+        for (let i = 0; i < 3; i++) {
+          if (min > arr[i]) {
+            min = arr[i];
+          }
+        }
+        answer = min;
+        return answer;
+      }
+      console.log(solution(2, 5, 1));
+    </script>
+  </body>
+</html>
