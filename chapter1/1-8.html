@@ -14,6 +14,9 @@
         for (let i = 0; i < arr.length; i++) {
           for (let j = i + 1; j < arr.length; j++) {
             if (arr[i] + arr[j] === value) {
+              // 여기서 i를 먼저빼서 j-1 인덱스를 빼기보다는
+              // i보다 j가 큰게 확실하니까 j를 먼저 빼고 그다음에 i를 빼면
+              // answer.splice(j,1);, answer.splice(i,1) 가능
               answer.splice(i, 1);
               answer.splice(j - 1, 1);
               break;
