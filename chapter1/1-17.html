@@ -1,0 +1,24 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>중복 단어 제거</title>
+  </head>
+  <body>
+    <script>
+      function solution(s) {
+        let answer = [];
+        for (let i = 0; i < s.length; i++) {
+          for (let j = i + 1; j < s.length; j++) {
+            if (s[i] === s[j]) {
+              s.splice(j, 1);
+            }
+          }
+        }
+        answer = s;
+        return answer;
+      }
+      let str = ["good", "time", "good", "time", "student"];
+      console.log(solution(str));
+    </script>
+  </body>
+</html>

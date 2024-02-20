@@ -1,0 +1,23 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>가운데 문자 출력</title>
+  </head>
+  <body>
+    <script>
+      function solution(s) {
+        let answer = "";
+        let mid = 0;
+        if (s.length % 2 === 1) {
+          mid = Math.ceil(s.length / 2) - 1;
+          answer = s[mid];
+        } else {
+          mid = Math.ceil(s.length / 2) - 1;
+          answer = s[mid] + s[mid + 1];
+        }
+        return answer;
+      }
+      console.log(solution("study"));
+    </script>
+  </body>
+</html>
