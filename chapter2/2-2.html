@@ -1,0 +1,29 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(arr) {
+        let answer = 1,
+          flag = 0;
+        for (let i = 1; i < arr.length; i++) {
+          for (let j = i - 1; j >= 0; j--) {
+            if (arr[i] <= arr[j]) {
+              flag = 1;
+            }
+          }
+          if (flag === 0) {
+            answer++;
+          }
+          flag = 0;
+        }
+        return answer;
+      }
+
+      let arr = [130, 135, 148, 140, 145, 150, 150, 153];
+      console.log(solution(arr));
+    </script>
+  </body>
+</html>
