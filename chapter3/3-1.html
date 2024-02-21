@@ -1,0 +1,38 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(s) {
+        // flag를 둘 필요 없이 answer="YES"
+        let str = "",
+          answer = "",
+          flag = 0;
+        // 문자열을 순회하면서 바꾸는것보다 s = s.toUpperCase()로 하면된다
+        for (let x of s) {
+          str += x.toUpperCase();
+        }
+        console.log(str.split("").reverse().join(","));
+        let mid = Math.floor(s.length / 2);
+        for (let i = 0; i < mid; i++) {
+          if (str[i] !== str[s.length - 1 - i]) {
+            // flag를 둘 필요 없이 return "NO"
+            flag = 1;
+            break;
+          }
+        }
+        if (flag === 1) {
+          answer = "NO";
+        } else {
+          answer = "YES";
+        }
+        return answer;
+      }
+
+      let str = "goooG";
+      console.log(solution(str));
+    </script>
+  </body>
+</html>
