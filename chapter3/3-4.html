@@ -1,0 +1,35 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>가장 짧은 문자거리</title>
+  </head>
+  <body>
+    <script>
+      function solution(s, t) {
+        let answer = [];
+        let tIndex = [];
+        for (let i = 0; i < s.length; i++) {
+          tIndex.push(s.indexOf(t, i));
+        }
+        for (let i = 0; i < s.length; i++) {
+          if (s[i] === t) {
+            answer.push(0);
+          } else {
+            let min = Number.MAX_SAFE_INTEGER;
+            for (let index of tIndex) {
+              let cha = Math.abs(i - index);
+              if (cha < min) {
+                min = cha;
+              }
+            }
+            answer.push(min);
+          }
+        }
+        return answer;
+      }
+
+      let str = "teachermode";
+      console.log(solution(str, "e"));
+    </script>
+  </body>
+</html>
