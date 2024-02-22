@@ -8,6 +8,8 @@
       function solution(s, t) {
         let answer = [];
         let tIndex = [];
+        // for문 안에 indexOf를 쓰면 시간복잡도가 O(n^2)
+        // 시간복잡도를 줄이는 방향으로 다시 해보기
         for (let i = 0; i < s.length; i++) {
           tIndex.push(s.indexOf(t, i));
         }
