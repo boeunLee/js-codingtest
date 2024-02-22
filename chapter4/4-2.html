@@ -1,0 +1,62 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>뒤집은 소수</title>
+  </head>
+  <body>
+    <script>
+      const isPrime = (num) => {
+        if (num === 1) {
+          return false;
+        }
+        if (num === 2) {
+          return true;
+        } else {
+          if (num % 2 === 0) {
+            return false;
+          } else {
+            for (let j = num - 1; j > 1; j--) {
+              if (num % j === 0) {
+                return false;
+              }
+            }
+            return true;
+          }
+        }
+      };
+      // 소수 조건: 1, 자기자신 외에 약수 없음
+      function solution(arr) {
+        let answer = [];
+        let reverseArr = [];
+        for (let i = 0; i < arr.length; i++) {
+          let num = arr[i];
+          let reverseNum = [];
+          while (num) {
+            reverseNum.push(num % 10);
+            num = Math.floor(num / 10);
+          }
+
+          let sum = 0;
+          for (let j = reverseNum.length - 1; j >= 0; j--) {
+            if (j === 0) {
+              sum += reverseNum[reverseNum.length - 1 - j];
+            } else {
+              sum += 10 ** j * reverseNum[reverseNum.length - 1 - j];
+            }
+          }
+          reverseArr.push(sum);
+        }
+
+        for (let i = 0; i < reverseArr.length; i++) {
+          if (isPrime(reverseArr[i])) {
+            answer.push(reverseArr[i]);
+          }
+        }
+        return answer;
+      }
+
+      let arr = [32, 55, 62, 20, 250, 370, 200, 30, 100];
+      console.log(solution(arr));
+    </script>
+  </body>
+</html>
