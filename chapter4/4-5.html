@@ -1,0 +1,42 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>K번째 큰 수</title>
+  </head>
+  <body>
+    <script>
+      function solution(n, k, card) {
+        let answer = 0,
+          cnt = 0;
+        let sumArr = [];
+        for (let i = 0; i < card.length - 2; i++) {
+          for (let j = i + 1; j < card.length - 1; j++) {
+            for (let k = j + 1; k < card.length; k++) {
+              sumArr.push(card[i] + card[j] + card[k]);
+            }
+          }
+        }
+
+        sumArr.sort((a, b) => b - a);
+
+        for (let i = 0; i < sumArr.length; i++) {
+          if (sumArr.indexOf(sumArr[i], i + 1) !== -1) {
+            continue;
+          } else {
+            cnt++;
+            if (cnt === k) {
+              answer = sumArr[i];
+              break;
+            }
+          }
+        }
+        if (answer === 0) {
+          answer = -1;
+        }
+        return answer;
+      }
+      let arr = [13, 15, 34, 23, 45, 65, 33, 11, 26, 42];
+      console.log(solution(10, 3, arr));
+    </script>
+  </body>
+</html>
