@@ -1,0 +1,67 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>졸업선물</title>
+  </head>
+  <body>
+    <script>
+      function solution(m, product) {
+        // product: 가격, 배송비
+        let n = product.length,
+          maxIndex = 0;
+        let max = Number.MIN_SAFE_INTEGER;
+        let answer = 0;
+        let arrSum = [],
+          sortArr = [];
+
+        for (let i = 0; i < n - 1; i++) {
+          let sum1 = product[i][0] + product[i][1];
+          let sum2 = product[i + 1][0] + product[i + 1][1];
+          if (sum1 > sum2) {
+            let temp = product[i];
+            product[i] = product[i + 1];
+            product[i + 1] = temp;
+          }
+        }
+
+        let sum = 0,
+          cnt = 1;
+        for (let i = 0; i < n; i++) {
+          sum = parseInt(arr[i][0] / 2) + arr[i][1];
+          for (let j = 0; j < n; j++) {
+            if (i !== j) {
+              sum += arr[j][0] + arr[j][1];
+              if (sum > m) {
+                break;
+              } else {
+                cnt++;
+              }
+            }
+          }
+          max = Math.max(max, cnt);
+          sum = 0;
+          cnt = 1;
+        }
+
+        answer = max;
+
+        return answer;
+      }
+
+      // let arr = [
+      //   [6, 6],
+      //   [2, 2],
+      //   [4, 3],
+      //   [4, 5],
+      //   [10, 3],
+      // ];
+      let arr = [
+        [2, 12],
+        [8, 4],
+        [6, 6],
+        [6, 7],
+      ];
+      console.log(solution(33, arr));
+    </script>
+  </body>
+</html>
