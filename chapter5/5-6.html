@@ -1,0 +1,36 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>학급 회장</title>
+  </head>
+  <body>
+    <script>
+      function solution(s) {
+        let answer = "";
+        let arr = [];
+        let tmp = new Set();
+        s.split("").forEach((student) => tmp.add(student));
+
+        tmp.forEach((name) => arr.push({ name: name, value: 0 }));
+
+        let max = Number.MIN_SAFE_INTEGER;
+        arr.forEach((student) => {
+          s.split("").forEach((votedStu) => {
+            if (student.name === votedStu) {
+              student.value++;
+            }
+            if (student.value > max) {
+              max = student.value;
+              answer = student.name;
+            }
+          });
+        });
+
+        return answer;
+      }
+
+      let str = "BACBACCACCBDEDE";
+      console.log(solution(str));
+    </script>
+  </body>
+</html>
