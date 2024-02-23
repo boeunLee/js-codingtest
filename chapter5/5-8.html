@@ -1,0 +1,49 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>모든 아나그램 찾기</title>
+  </head>
+  <body>
+    <script>
+      const checkAna = (sh, t) => {
+        for (word of t) {
+          if (!sh.has(word) || sh.get(word) === 0) return false;
+          else sh.set(word, sh.get(word) - 1);
+        }
+        return true;
+      };
+
+      function solution(s, t) {
+        let k = t.length;
+        let kStr = "";
+        let arr = [];
+        let answer = 0;
+
+        for (let i = 0; i < k; i++) kStr += s[i];
+        arr.push(kStr);
+        for (let i = k; i < s.length; i++) {
+          kStr += s[i];
+          kStr = kStr.slice(1, i + 1);
+          arr.push(kStr);
+        }
+
+        arr.forEach((str) => {
+          let sh = new Map();
+          for (word of str) {
+            if (sh.has(word)) sh.set(word, sh.get(word) + 1);
+            else sh.set(word, 1);
+          }
+          if (checkAna(sh, t)) {
+            answer++;
+          }
+        });
+
+        return answer;
+      }
+
+      let a = "bacaAacba";
+      let b = "abc";
+      console.log(solution(a, b));
+    </script>
+  </body>
+</html>
