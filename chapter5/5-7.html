@@ -1,0 +1,37 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(str1, str2) {
+        let obj = new Map();
+        let answer = "YES";
+        for (word of a) {
+          if (obj.has(word)) obj.set(word, obj.get(word) + 1);
+          else obj.set(word, 1);
+        }
+        for (word of b) {
+          if (obj.has(word)) {
+            obj.set(word, obj.get(word) - 1);
+            if (obj.get(word) < 0) {
+              answer = "NO";
+              break;
+            }
+          } else {
+            answer = "NO";
+            break;
+          }
+        }
+        return answer;
+      }
+
+      let a = "AbaAeCe";
+      let b = "baeeACA";
+      // let a = "abaCC";
+      // let b = "Caaab";
+      console.log(solution(a, b));
+    </script>
+  </body>
+</html>
