@@ -1,0 +1,26 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>공통원소 구하기</title>
+  </head>
+  <body>
+    <script>
+      function solution(arr1, arr2) {
+        let arr = [...arr1, ...arr2];
+        arr.sort((a, b) => a - b);
+        let answer = [];
+        for (let i = 0; i < arr.length; i++) {
+          console.log(arr.indexOf(arr[i], i + 1));
+          if (arr.indexOf(arr[i], i + 1) !== -1) {
+            answer.push(arr[i]);
+          }
+        }
+        return answer;
+      }
+
+      let a = [1, 3, 9, 5, 2];
+      let b = [3, 2, 5, 7, 8];
+      console.log(solution(a, b));
+    </script>
+  </body>
+</html>
