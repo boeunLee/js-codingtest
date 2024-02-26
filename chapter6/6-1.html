@@ -10,7 +10,7 @@
         let stack = [];
         for (let i = 0; i < s.length; i++) {
           if (s[i] === ")") {
-            a = stack.pop();
+            stack.pop();
           } else {
             stack.push(s[i]);
           }
