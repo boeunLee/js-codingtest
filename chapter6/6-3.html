@@ -1,0 +1,36 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>크레인 인형 뽑기</title>
+  </head>
+  <body>
+    <script>
+      function solution(board, moves) {
+        let answer = 0;
+        let stack = [];
+        for (let index of moves) {
+          let toy = board[index - 1].pop();
+          let lastToy = stack[stack.length - 1];
+          if (lastToy !== toy) {
+            if (toy > 0) stack.push(toy);
+          } else {
+            stack.pop();
+            answer += 2;
+          }
+        }
+        return answer;
+      }
+
+      let a = [
+        [0, 0, 0, 0, 0],
+        [0, 0, 1, 0, 3],
+        [0, 2, 5, 0, 1],
+        [4, 2, 4, 4, 2],
+        [3, 5, 1, 3, 1],
+      ];
+
+      let b = [1, 5, 3, 5, 1, 2, 1, 4];
+      console.log(solution(a, b));
+    </script>
+  </body>
+</html>
