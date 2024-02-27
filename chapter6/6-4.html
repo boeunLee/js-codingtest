@@ -1,0 +1,54 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>후위식 연산</title>
+  </head>
+  <body>
+    <script>
+      function solution(s) {
+        let stack = [];
+        let answer = 0;
+        for (x of s) {
+          if (x === "*") {
+            console.log(answer, stack);
+            answer *= parseInt(stack.pop());
+          } else if (x === "/") {
+            answer = parseInt(stack.pop()) / answer;
+          } else if (x === "+") {
+            let a = parseInt(stack.pop());
+            let b = parseInt(stack.pop());
+            answer += a + b;
+          } else if (x === "-") {
+            let a = parseInt(stack.pop());
+            let b = parseInt(stack.pop());
+            answer += b - a;
+          } else {
+            stack.push(x);
+          }
+        }
+
+        if (stack.length > 0) {
+          while (stack.length > 0) {
+            op = stack.pop();
+            if (op === "*") {
+              answer *= parseInt(stack.pop());
+            } else if (op === "/") {
+              answer /= parseInt(stack.pop());
+            } else if (op === "+") {
+              answer += parseInt(stack.pop());
+            } else if (op === "-") {
+              answer -= parseInt(stack.pop());
+            }
+          }
+        }
+
+        return answer;
+      }
+
+      let str = "352+*9-";
+      // let str = "3562-+*9-";
+      // 18
+      console.log(solution(str));
+    </script>
+  </body>
+</html>
