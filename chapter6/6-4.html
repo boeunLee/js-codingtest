@@ -6,48 +6,24 @@
   <body>
     <script>
       function solution(s) {
+        let answer;
         let stack = [];
-        let answer = 0;
-        for (x of s) {
-          if (x === "*") {
-            console.log(answer, stack);
-            answer *= parseInt(stack.pop());
-          } else if (x === "/") {
-            answer = parseInt(stack.pop()) / answer;
-          } else if (x === "+") {
-            let a = parseInt(stack.pop());
-            let b = parseInt(stack.pop());
-            answer += a + b;
-          } else if (x === "-") {
-            let a = parseInt(stack.pop());
-            let b = parseInt(stack.pop());
-            answer += b - a;
-          } else {
-            stack.push(x);
+        for (let x of s) {
+          if (!isNaN(x)) stack.push(x);
+          else {
+            let rt = parseInt(stack.pop());
+            let lt = parseInt(stack.pop());
+            if (x === "+") stack.push(lt + rt);
+            else if (x === "-") stack.push(lt - rt);
+            else if (x === "*") stack.push(lt * rt);
+            else if (x === "/") stack.push(lt / rt);
           }
         }
-
-        if (stack.length > 0) {
-          while (stack.length > 0) {
-            op = stack.pop();
-            if (op === "*") {
-              answer *= parseInt(stack.pop());
-            } else if (op === "/") {
-              answer /= parseInt(stack.pop());
-            } else if (op === "+") {
-              answer += parseInt(stack.pop());
-            } else if (op === "-") {
-              answer -= parseInt(stack.pop());
-            }
-          }
-        }
-
+        answer = stack.pop();
         return answer;
       }
 
       let str = "352+*9-";
-      // let str = "3562-+*9-";
-      // 18
       console.log(solution(str));
     </script>
   </body>
