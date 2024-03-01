@@ -1,0 +1,29 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>쇠막대기</title>
+  </head>
+  <body>
+    <script>
+      function solution(s) {
+        // 여는괄호: 막대기의 시작점 혹은 레이저의 시작점
+        // 어떤 경우가 막대기이고 레이저인지 구분
+        let answer = 0;
+        let stack = [];
+        for (let i = 0; i < s.length; i++) {
+          if (s[i] === "(") stack.push("(");
+          else {
+            stack.pop();
+            if (s[i - 1] === "(") answer += stack.length; //레이저
+            else answer++; //막대기
+            //stack.pop(); 이 위치에 하면 레이저까지 카운팅한다.
+          }
+        }
+        return answer;
+      }
+
+      let a = "()(((()())(())()))(())";
+      console.log(solution(a));
+    </script>
+  </body>
+</html>
