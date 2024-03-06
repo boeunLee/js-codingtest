@@ -1,0 +1,30 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>교육과정 설계</title>
+  </head>
+  <body>
+    <script>
+      function solution(need, plan) {
+        let answer = "YES";
+        plan = plan.split("");
+        for (let i = 0; i < need.length; i++) {
+          let task;
+          while (need[i] !== task) {
+            task = plan.shift();
+            if (need[i] === task) break;
+            if (plan.length === 0) return (answer = "NO");
+          }
+          if (i < need.length - 1 && plan.length === 0) {
+            return (answer = "NO");
+          }
+        }
+        return answer;
+      }
+
+      let a = "CBA";
+      let b = "CBDAGE";
+      console.log(solution(a, b));
+    </script>
+  </body>
+</html>
