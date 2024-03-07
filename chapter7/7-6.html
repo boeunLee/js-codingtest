@@ -1,0 +1,28 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(arr) {
+        let answer = [];
+        let pos, target;
+        for (let i = 0; i < arr.length; i++) {
+          if (arr[i + 1] < arr[i]) {
+            pos = i + 1;
+            target = arr[i];
+            break;
+          }
+        }
+        arr.sort((a, b) => a - b);
+        console.log(arr.indexOf(target));
+        answer = [pos, arr.indexOf(target) + 1].join(" ");
+        return answer;
+      }
+
+      let arr = [120, 125, 152, 130, 135, 135, 143, 127, 160];
+      console.log(solution(arr));
+    </script>
+  </body>
+</html>
