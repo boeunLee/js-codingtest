@@ -1,0 +1,30 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>삽입정렬</title>
+  </head>
+  <body>
+    <script>
+      function solution(arr) {
+        let answer = "";
+        for (let i = 1; i < arr.length; i++) {
+          // idx를 둘 필요 없이 let j를 두고 실행해도 됨
+          let idx = -1;
+          let tmp = arr[i];
+          for (let j = i - 1; j >= 0; j--) {
+            if (arr[j] > tmp) arr[j + 1] = arr[j];
+            else {
+              idx = j;
+            }
+          }
+          arr[idx + 1] = tmp;
+        }
+        answer = arr.join(" ");
+        return answer;
+      }
+
+      let arr = [11, 7, 5, 6, 10, 9];
+      console.log(solution(arr));
+    </script>
+  </body>
+</html>
