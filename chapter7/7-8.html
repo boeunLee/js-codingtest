@@ -7,6 +7,26 @@
     <script>
       function solution(meeting) {
         let answer;
+        let max = Number.MIN_SAFE_INTEGER;
+        let start = [],
+          end = [];
+        for (let x of meeting) {
+          start.push(x[0]);
+          end.push(x[1]);
+        }
+        for (let i = 0; i < meeting.length; i++) {
+          let target = end[i];
+          let cnt = 1;
+          start.forEach((item, index) => {
+            if (target === item) {
+              target = end[index];
+              cnt++;
+            }
+          });
+          max = Math.max(max, cnt);
+        }
+        answer = max;
+        return answer;
       }
 
       let arr = [
