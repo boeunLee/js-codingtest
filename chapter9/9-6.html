@@ -1,0 +1,37 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>출력결과</title>
+    </head>
+    <body>
+        <script>
+            function solution(s, e){  
+              let queue = [];
+              let cnt = 0;
+              queue.push(s);
+              while(true){
+                let v = queue.shift();
+                if(v===e){
+                  break;
+                }else if(v<e){
+                  let v1 = v+1;
+                  let v2 = v+5;
+                  if(Math.abs(e-v1)<Math.abs(e-v2)){
+                    queue.push(v1);
+                  }else{
+                    queue.push(v2);
+                  }
+                  cnt++;
+                }else{
+                  queue.push(v-1);
+                  cnt++;
+                }
+              }
+              return cnt;
+            }
+
+            console.log(solution(5, 14)); //3
+            console.log(solution(8, 3)); //5
+        </script>
+    </body>
+</html>
